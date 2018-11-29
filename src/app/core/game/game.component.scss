@@ -1,0 +1,34 @@
+.game-header {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 4rem; 
+}
+
+.cards-content {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1 0 calc(25% - 20px);; /* explanation below */
+    margin: 5px;
+    background-color: aqua;
+    padding-bottom: 21%;
+  }
+
+  .game-footer {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+  }

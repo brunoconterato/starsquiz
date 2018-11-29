@@ -1,3 +1,21 @@
-<p>
-  game works!
-</p>
+<div class="game-container">
+  <div class="game-header">
+      <img width="60" alt="Stormtrooper Helmet Logo"
+      src="../../../assets/images/StormtrooperHelmetIcon.svg">
+    
+    <h1>StarsQuiz</h1>
+    
+    <app-timer></app-timer>
+  </div>
+
+  <div class="cards-content">
+    <app-card class="card" *ngFor="let card of cards"></app-card>
+  </div>
+
+  <div class="game-footer">
+    <h2>Anterior</h2>
+    <h2>Próximo</h2>
+  </div>
+</div>
+
+

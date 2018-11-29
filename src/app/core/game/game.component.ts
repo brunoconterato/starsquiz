@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
+  cards: Array<any>;
+
   constructor() { }
 
   ngOnInit() {
+    this.cards = new Array(100);
   }
 
 }
