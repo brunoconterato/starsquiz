@@ -16,19 +16,22 @@ h1 {
     flex: 1;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .card {
-    flex: 1 0 calc(25% - 20px);; /* explanation below */
-    margin: 5px;
+    margin: 10px;
+    width: 22vw;
+    height: 22vw;
+    min-width: 250px;
+    min-height: 250px;
     background-color: aqua;
-    padding-bottom: 21%;
-  }
+}
 
-  .game-footer {
-      display: flex;
-      flex: 1;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-around;
-  }
+.game-footer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
