@@ -2,30 +2,21 @@
     display: flex;
     flex: 1;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
 }
 
 h1 {
     font-weight: bold;
-    font-size: 4rem; 
+    font-size: 4rem;
 }
 
 .cards-content {
     display: flex;
     flex: 1;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-}
-
-.card {
-    margin: 10px;
-    width: 22vw;
-    height: 22vw;
-    min-width: 250px;
-    min-height: 250px;
-    background-color: aqua;
 }
 
 .game-footer {
