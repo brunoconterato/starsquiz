@@ -1,3 +1,39 @@
-<p>
-  finish-modal works!
-</p>
+
+<div #finishModal class="modal fade" id="finishModal" tabindex="-1" role="dialog" aria-labelledby="finishModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Quiz Finalizado!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row text-center">
+            <div class="col-12" id="points-row">
+                <strong>35</strong> Pontos!
+            </div>
+            <div class="col-12">
+                Preencha o formulário abaixo para salvar sua pontuação:
+            </div>
+            <div class="col-12 text-left form">
+              <div class="col-12">
+                <label style="width: 60px;">Nome:</label>
+                <input type="text" style="width: calc(100% - 60px); padding: 0"/>
+              </div>
+              <div class="col-12">
+                <label style="width: 60px;">Email:</label>
+                <input type="text" style="width: calc(100% - 60px); padding: 0"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

@@ -6,14 +6,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Output() openDetails = new EventEmitter<any>();
+  @Output() callback = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
   }
 
   showDetails() {
-    this.openDetails.emit({
+    this.callback.emit({
       fn: 'openDetails',
       payload: ''
     });

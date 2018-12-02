@@ -1,3 +1,4 @@
+import { FinishModalComponent } from './finish-modal/finish-modal.component';
 import { DetailsModalComponent } from './details-modal/details-modal.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
@@ -9,6 +10,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class GameComponent implements OnInit {
   @ViewChild(DetailsModalComponent)
   detailsModal: DetailsModalComponent;
+
+  @ViewChild(FinishModalComponent)
+  finishModal: FinishModalComponent;
+
   cards: Array<any>;
 
   constructor() { }
@@ -19,6 +24,16 @@ export class GameComponent implements OnInit {
 
   eventReceiver(ev) {
     console.log('evvent', ev);
+    if (this[ev.fn]) {
+      this[ev.fn](ev.payload);
+    }
+  }
+
+  openDetails(payload) {
     this.detailsModal.open();
+  }
+
+  showFinish(payload) {
+    this.finishModal.open();
   }
 }

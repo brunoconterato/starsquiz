@@ -4,12 +4,12 @@
       src="../../../assets/images/StormtrooperHelmetIcon.svg">
 
     <h1>StarsQuiz</h1>
-
+    <button (click)="showFinish()">Finish</button>
     <app-timer></app-timer>
   </div>
 
   <div class="cards-content">
-    <app-card (openDetails)="eventReceiver($event)" *ngFor="let card of cards"></app-card>
+    <app-card (callback)="eventReceiver($event)" *ngFor="let card of cards"></app-card>
   </div>
 
   <div class="game-footer">
@@ -19,3 +19,4 @@
 </div>
 
 <app-details-modal></app-details-modal>
+<app-finish-modal></app-finish-modal>

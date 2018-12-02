@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+declare var $: any;
+
 @Component({
   selector: 'app-finish-modal',
   templateUrl: './finish-modal.component.html',
@@ -12,4 +14,7 @@ export class FinishModalComponent implements OnInit {
   ngOnInit() {
   }
 
+  open() {
+    $('#finishModal').modal('show');
+  }
 }
