@@ -8,15 +8,12 @@
     <app-timer></app-timer>
   </div>
 
-
-
   <div class="cards-content">
     <!-- items being paged -->
     <div *ngFor="let item of pagedItems">
-      <app-card (callback)="eventReceiver($event)"></app-card>
+      <app-card [person]="item" (callback)="eventReceiver($event)"></app-card>
     </div>
   </div>
-
 
   <!-- pager -->
   <ul *ngIf="pager.pages && pager.pages.length" class="pagination">

@@ -67,7 +67,7 @@ export class GameComponent implements OnInit {
   }
 
   openDetails(payload) {
-    this.detailsModal.open();
+    this.detailsModal.open(payload);
   }
 
   showFinish(payload) {

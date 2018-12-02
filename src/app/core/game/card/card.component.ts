@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Person } from '../game.interface';
 
 @Component({
   selector: 'app-card',
@@ -6,16 +7,22 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Output() callback = new EventEmitter<any>();
+  @Input() set person(newPerson: Person) {
+    this._person = newPerson;
+  }
+
+  @Output()
+  callback = new EventEmitter<any>();
+
+  _person: Person;
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   showDetails() {
     this.callback.emit({
       fn: 'openDetails',
-      payload: ''
+      payload: this._person,
     });
   }
 }
