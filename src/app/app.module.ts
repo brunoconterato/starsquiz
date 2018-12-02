@@ -1,3 +1,5 @@
+import { CoreModule } from './core/core.module';
+import { CoreRoutingModule } from './core/core-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,17 +16,11 @@ import { FinishModalComponent } from './core/game/finish-modal/finish-modal.comp
 @NgModule({
   declarations: [
     AppComponent,
-    CoreComponent,
-    MainComponent,
-    GameComponent,
-    CardComponent,
-    TimerComponent,
-    DetailsModalComponent,
-    FinishModalComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    CoreModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
