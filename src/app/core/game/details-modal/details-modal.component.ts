@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Person } from '../game.interface';
 import * as _ from 'lodash';
 
+import { IMAGE_URLS } from '../game.images';
+
 declare var $: any;
 
 @Component({
@@ -28,6 +30,8 @@ export class DetailsModalComponent implements OnInit {
   vehiclesTxt = '';
   planetsTxt = '';
 
+  imageUrl: string;
+
   constructor() { }
 
   ngOnInit() {
@@ -41,6 +45,9 @@ export class DetailsModalComponent implements OnInit {
   }
 
   parseData() {
+    if (this.person.name && IMAGE_URLS[this.person.name]) {
+      this.imageUrl = IMAGE_URLS[this.person.name];
+    }
     this.person['planets'] = this.person['homeworld'];
     for (const type of ['species', 'vehicles', 'films', 'planets']) {
       if (this[type + 'Txt'] !== null) {
