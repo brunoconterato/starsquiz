@@ -9,7 +9,7 @@
   </div>
 
   <div class="cards-content">
-    <app-card *ngFor="let card of cards"></app-card>
+    <app-card (openDetails)="eventReceiver($event)" *ngFor="let card of cards"></app-card>
   </div>
 
   <div class="game-footer">
@@ -18,4 +18,4 @@
   </div>
 </div>
 
-
+<app-details-modal></app-details-modal>

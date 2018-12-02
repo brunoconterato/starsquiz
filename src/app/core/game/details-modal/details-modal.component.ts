@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+declare var $: any;
+
 @Component({
   selector: 'app-details-modal',
   templateUrl: './details-modal.component.html',
@@ -12,4 +14,7 @@ export class DetailsModalComponent implements OnInit {
   ngOnInit() {
   }
 
+  open() {
+    $('#detailsModal').modal('show');
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DetailsModalComponent } from './details-modal/details-modal.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-game',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-
+  @ViewChild(DetailsModalComponent)
+  detailsModal: DetailsModalComponent;
   cards: Array<any>;
 
   constructor() { }
@@ -15,4 +17,7 @@ export class GameComponent implements OnInit {
     this.cards = new Array(100);
   }
 
+  eventReceiver(ev) {
+    this.detailsModal.open();
+  }
 }
