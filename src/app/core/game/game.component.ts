@@ -32,7 +32,8 @@ export class GameComponent implements OnInit {
   planets: Array<Planet>;
 
   people: Array<Person>;
-  peopleQuantity: number;
+  // peopleQuantity: number;
+  peopleQuantity: number = 20;
 
   pager: any = {}; // pager object
   pagedItems: any[]; // paged items
@@ -57,7 +58,7 @@ export class GameComponent implements OnInit {
   fetchData(page: number): void {
     this.swapi.getPeople(page)
       .subscribe(response => {
-        this.peopleQuantity = response.count;
+        // this.peopleQuantity = response.count;
         this.people = response.results;
 
         this.setPage(page);

@@ -1,7 +1,7 @@
 <div class="card-container">
-  <img class="card-image" alt="Stormtrooper Helmet Logo"
-    src="../../../../assets/images/StormtrooperHelmetIcon.svg">
-
+  <ng-container>
+    <img class="card-image" [src]="imageUrl">
+  </ng-container>
   <div class="options-row">
     <button class="options-button" (click)="showDetails()"><i class="fa fa-question"></i></button>
     <input type="text" placeholder="Nome">
