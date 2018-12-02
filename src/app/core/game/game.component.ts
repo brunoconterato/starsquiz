@@ -37,6 +37,8 @@ export class GameComponent implements OnInit {
   pager: any = {}; // pager object
   pagedItems: any[]; // paged items
 
+  initialGameData: any;
+
   constructor(
     private pagerService: PagerService,
     private swapi: SwapiService,
@@ -44,8 +46,8 @@ export class GameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const initialGameData = this.swapi.getData();
-    if (!initialGameData) {
+    this.initialGameData = this.swapi.getData();
+    if (!this.initialGameData) {
       this.router.navigate(['/main']);
     }
 

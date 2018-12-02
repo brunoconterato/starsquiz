@@ -15,13 +15,13 @@
                 src="../../../../assets/images/StormtrooperHelmetIcon.svg">
           </div>
           <div class="col-8">
-            <label class="col-12">Especie: <label *ngFor="let specie of person.species">{{ specie }}, </label></label>
-            <label class="col-12">Height: {{ person.height }}</label>
-            <label class="col-12">Hair: {{ person.hair_color }}</label>
-            <label class="col-12">Planet: {{ person.homeworld }}</label>
+            <label class="col-12">Espécie: {{ speciesTxt }}</label>
+            <label class="col-12">Altura: {{ person.height }}</label>
+            <label class="col-12">Cabelo: {{ person.hair_color }}</label>
+            <label class="col-12">Planeta: {{ planetsTxt }}</label>
           </div>
-          <label class="col-12">Movies: the movie 1</label>
-          <label class="col-12">Vehicles: the vehicle 1, the vehicle 2, the vehicle 3</label>
+          <label class="col-12">Filmes: {{ filmsTxt }}</label>
+          <label class="col-12">Veículos: {{ vehiclesTxt }}</label>
         </div>
       </div>
       <div class="modal-footer">

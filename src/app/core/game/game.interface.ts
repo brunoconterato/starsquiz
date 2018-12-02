@@ -4,6 +4,7 @@ export interface Person {
   height: number;
   hair_color: string;
   homeworld: string;
+  planets: string;
   films: Array<string>;
   vehicles: Array<string>;
 }
