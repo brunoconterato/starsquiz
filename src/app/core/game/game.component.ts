@@ -2,6 +2,10 @@ import { PagerService } from './pagination/pagination.service';
 import { FinishModalComponent } from './finish-modal/finish-modal.component';
 import { DetailsModalComponent } from './details-modal/details-modal.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { SwapiService } from './swapi.service';
+
+import { Person, Vehicle, Film } from './game.interface';
+import { forkJoin, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-game',
@@ -15,7 +19,8 @@ export class GameComponent implements OnInit {
   @ViewChild(FinishModalComponent)
   finishModal: FinishModalComponent;
 
-  cards: Array<any>;
+  people: Array<Person>;
+  peopleQuantity: number;
 
   // pager object
   pager: any = {};
@@ -23,13 +28,36 @@ export class GameComponent implements OnInit {
   // paged items
   pagedItems: any[];
 
-  constructor(private pagerService: PagerService) { }
+  films: Array<Film>;
+  vehicles: Array<Vehicle>;
+
+  constructor(
+    private pagerService: PagerService,
+    private swapi: SwapiService,
+  ) { }
 
   ngOnInit() {
-    this.cards = new Array(77);
+    this.fetchData(1);
 
-    // initialize to page 1
-    this.setPage(1);
+    const films$ = this.swapi.getFilms();
+
+    const vehicles$ = this.swapi.getVehicles();
+
+    forkJoin([films$, vehicles$])
+      .subscribe((response: any) => {
+        this.films = response[0].results;
+        this.vehicles = response[1].results;
+      });
+  }
+
+  fetchData(page: number): void {
+    this.swapi.getPeople(page)
+      .subscribe(response => {
+        this.peopleQuantity = response.count;
+        this.people = response.results;
+
+        this.setPage(page);
+      });
   }
 
   eventReceiver(ev) {
@@ -48,10 +76,9 @@ export class GameComponent implements OnInit {
 
   setPage(page: number) {
     // get pager object from service
-    this.pager = this.pagerService.getPager(this.cards.length, page);
+    this.pager = this.pagerService.getPager(this.peopleQuantity, page);
 
     // get current page of items
-    // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-    this.pagedItems = this.cards.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    this.pagedItems = this.people;
   }
 }
