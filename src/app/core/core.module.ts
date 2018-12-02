@@ -9,6 +9,7 @@ import { CardComponent } from './game/card/card.component';
 import { TimerComponent } from './game/timer/timer.component';
 import { DetailsModalComponent } from './game/details-modal/details-modal.component';
 import { FinishModalComponent } from './game/finish-modal/finish-modal.component';
+import { PaginationComponent } from './game/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FinishModalComponent } from './game/finish-modal/finish-modal.component
     TimerComponent,
     DetailsModalComponent,
     FinishModalComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,14 +8,43 @@
     <app-timer></app-timer>
   </div>
 
+
+
   <div class="cards-content">
-    <app-card (callback)="eventReceiver($event)" *ngFor="let card of cards"></app-card>
+    <!-- items being paged -->
+    <div *ngFor="let item of pagedItems">
+      <app-card (callback)="eventReceiver($event)"></app-card>
+    </div>
   </div>
 
-  <div class="game-footer">
-    <h2>Anterior</h2>
-    <h2>Próximo</h2>
-  </div>
+
+  <!-- pager -->
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li class="pager-text pager-text-left" [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(1)">&lt;&lt; First</a>
+      </li>
+      <li class="pager-text pager-text-left" [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(pager.currentPage - 1)">&lt; Previous</a>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a (click)="setPage(page)">{{page}}</a>
+      </li>
+      <li class="pager-text pager-text-right" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)">Next &gt;</a>
+      </li>
+      <li class="pager-text pager-text-right" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.totalPages)">Last &gt;&gt;</a>
+      </li>
+  </ul>
+
+
+
+
+
+
+  <!-- <div class="cards-content">
+    <app-card (callback)="eventReceiver($event)" *ngFor="let card of cards"></app-card>
+  </div> -->
 </div>
 
 <app-details-modal></app-details-modal>
