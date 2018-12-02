@@ -16,6 +16,7 @@ export class DetailsModalComponent implements OnInit {
     height: 0,
     hair_color: '',
     homeworld: '',
+    planets: '',
     films: [],
     vehicles: [],
   };
