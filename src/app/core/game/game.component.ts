@@ -23,7 +23,6 @@ export class GameComponent implements OnInit {
   }
 
   eventReceiver(ev) {
-    console.log('evvent', ev);
     if (this[ev.fn]) {
       this[ev.fn](ev.payload);
     }
