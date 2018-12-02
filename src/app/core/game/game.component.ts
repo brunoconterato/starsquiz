@@ -18,6 +18,7 @@ export class GameComponent implements OnInit {
   }
 
   eventReceiver(ev) {
+    console.log('evvent', ev);
     this.detailsModal.open();
   }
 }

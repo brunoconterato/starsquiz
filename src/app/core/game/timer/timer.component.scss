@@ -1,0 +1,39 @@
+#countdown {
+  display: flex;
+  flex: 1;
+  text-align: center;
+}
+
+#countdown-number {
+  color: #333;
+  display: flex;
+  flex: 1;
+  align-self: center;
+  font-size: 26px;
+  margin-left: 1rem;
+}
+
+svg {
+  width: 52px;
+  height: 52px;
+  transform: rotateY(-180deg) rotateZ(-90deg);
+}
+
+svg circle {
+  stroke-dasharray: 138px; // 2 * pi * r
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
+  stroke-width: 2px;
+  stroke: #333;
+  fill: none;
+  animation: countdown 120s linear forwards;
+}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 139px; // 2 * pi * r
+  }
+}
