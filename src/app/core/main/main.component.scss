@@ -1,13 +1,37 @@
 .main-container {
-    text-align:center;
-    margin-top: 2rem
+  text-align:center;
+  margin-top: 2rem
 }
 
 .play-button {
-    width: 10rem;
-    height: 3rem;
-    background-color: aqua;
-    margin-top: 2rem;
-    text-align: center;
-    text-justify: center;
+  width: 10rem;
+  height: 3rem;
+  background-color: aqua;
+  margin-top: 2rem;
+  text-align: center;
+  text-justify: center;
+}
+
+.loading {
+  margin-top: 20px;
+}
+
+.flash {
+  color: red;
+  font-size: 20px;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  animation: flasher 1.2s linear infinite;
+}
+
+@keyframes flasher {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

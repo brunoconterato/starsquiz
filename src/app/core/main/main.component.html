@@ -6,6 +6,11 @@
   <h1 style="margin-top: 2rem">
     StarsQuiz
   </h1>
-  
-  <button routerLink="/game" class="play-button">Jogar!</button>
+
+  <button routerLink="/game" class="play-button"
+    *ngIf="checkLoadEnd(); else loading">Jogar!</button>
+
+  <ng-template #loading class="flash" id="loading">
+    <div class="flash">Aguarde, carregando dados...</div>
+  </ng-template>
 </div>

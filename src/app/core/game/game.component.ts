@@ -1,11 +1,11 @@
 import { PagerService } from './pagination/pagination.service';
 import { FinishModalComponent } from './finish-modal/finish-modal.component';
 import { DetailsModalComponent } from './details-modal/details-modal.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { SwapiService } from './swapi.service';
 
-import { Person, Vehicle, Film } from './game.interface';
-import { forkJoin, Observable } from 'rxjs';
+import { Person, Vehicle, Film, Specie, Planet } from './game.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -19,35 +19,37 @@ export class GameComponent implements OnInit {
   @ViewChild(FinishModalComponent)
   finishModal: FinishModalComponent;
 
+  @Input()
+  films: Array<Film>;
+
+  @Input()
+  vehicles: Array<Vehicle>;
+
+  @Input()
+  species: Array<Specie>;
+
+  @Input()
+  planets: Array<Planet>;
+
   people: Array<Person>;
   peopleQuantity: number;
 
-  // pager object
-  pager: any = {};
-
-  // paged items
-  pagedItems: any[];
-
-  films: Array<Film>;
-  vehicles: Array<Vehicle>;
+  pager: any = {}; // pager object
+  pagedItems: any[]; // paged items
 
   constructor(
     private pagerService: PagerService,
     private swapi: SwapiService,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    const initialGameData = this.swapi.getData();
+    if (!initialGameData) {
+      this.router.navigate(['/main']);
+    }
+
     this.fetchData(1);
-
-    const films$ = this.swapi.getFilms();
-
-    const vehicles$ = this.swapi.getVehicles();
-
-    forkJoin([films$, vehicles$])
-      .subscribe((response: any) => {
-        this.films = response[0].results;
-        this.vehicles = response[1].results;
-      });
   }
 
   fetchData(page: number): void {

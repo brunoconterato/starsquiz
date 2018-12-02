@@ -15,3 +15,11 @@ export interface Film {
 export interface Vehicle {
   name: string;
 }
+
+export interface Planet {
+  name: string;
+}
+
+export interface Specie {
+  name: String;
+}
