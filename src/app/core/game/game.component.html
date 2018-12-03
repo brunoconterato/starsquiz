@@ -5,7 +5,7 @@
 
     <h1>StarsQuiz</h1>
     <button (click)="showFinish()">Finish</button>
-    <app-timer></app-timer>
+    <app-timer (callback)="eventReceiver($event)"></app-timer>
   </div>
 
   <div class="cards-content">

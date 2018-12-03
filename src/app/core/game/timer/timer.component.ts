@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 
 const TOTAL_TIME = 120;
 
@@ -8,7 +8,7 @@ const TOTAL_TIME = 120;
   styleUrls: ['./timer.component.scss']
 })
 export class TimerComponent implements OnInit {
-  // @ViewChild('countdownNumber') countdownNumber: any;
+  @Output() callback = new EventEmitter<any>();
   timeLeft: number = TOTAL_TIME;
   countdownNumber: any;
   interval;
@@ -27,6 +27,9 @@ export class TimerComponent implements OnInit {
         this.timeLeft--;
       } else {
         clearInterval(this.interval);
+        this.callback.emit({
+          fn: 'finishGame',
+        });
       }
 
       this.setText();

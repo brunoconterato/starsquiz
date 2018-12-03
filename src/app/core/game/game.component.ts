@@ -117,4 +117,8 @@ export class GameComponent implements OnInit {
     obj[pts.personName] = pts;
     return obj;
   }
+
+  finishGame() {
+    this.finishModal.open();
+  }
 }
