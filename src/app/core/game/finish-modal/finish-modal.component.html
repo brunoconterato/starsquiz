@@ -19,12 +19,17 @@
             </div>
             <form [formGroup]="form" class="col-12 text-left form">
               <div class="col-12">
-                <label for="name" style="width: 60px;">Nome:</label>
-                <input id="name" formControlName="name" type="text" style="width: calc(100% - 60px); padding: 0"/>
+                <label for="name" style="width: 60px;"
+                  [class.red-text]="form.get('name').touched && form.get('name').errors">*Nome:</label>
+                <input id="name" formControlName="name" type="text" style="width: calc(100% - 60px); padding: 0"
+                  [class.redRectangle]="form.get('name').touched && form.get('name').errors"/>
               </div>
+
               <div class="col-12">
-                <label for="email" style="width: 60px;">Email:</label>
-                <input id="email" formControlName="email" type="email" style="width: calc(100% - 60px); padding: 0"/>
+                <label for="email" style="width: 60px;"
+                  [class.red-text]="form.get('email').touched && form.get('email').errors">*Email:</label>
+                <input id="email" formControlName="email" type="email" style="width: calc(100% - 60px); padding: 0"
+                  [class.redRectangle]="form.get('email').touched && form.get('email').errors"/>
               </div>
             </form>
           </div>
@@ -32,8 +37,8 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary"
             data-dismiss="modal" routerLink="/main">Cancelar</button>
-          <button type="button" routerLink="/main" class="btn btn-success"
-            data-dismiss="modal" (click)="savePoints()">Salvar</button>
+          <button type="button" class="btn btn-success"
+           data-dismiss="modal" (click)="savePoints()">Salvar</button>
           <!-- <button type="button" routerLink="/main" class="btn btn-success" data-dismiss="modal">Finalizar</button> -->
         </div>
       </div>

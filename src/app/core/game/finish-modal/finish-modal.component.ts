@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as _ from 'lodash';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -18,12 +19,12 @@ export class FinishModalComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      name: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
       points: [0, Validators.required]
     });
   }
@@ -54,6 +55,13 @@ export class FinishModalComponent implements OnInit {
   }
 
   savePoints() {
+    // stop here if form is invalid
+    this.form.get('name').markAsTouched();
+    this.form.get('email').markAsTouched();
+    if (this.form.invalid) {
+      return;
+    }
+
     let leaderBoards = JSON.parse(localStorage.getItem('leaderBoards'));
     if (!leaderBoards) {
       leaderBoards = new Array<any>();
@@ -62,5 +70,10 @@ export class FinishModalComponent implements OnInit {
     leaderBoards.push(this.form.value);
 
     localStorage.setItem('leaderBoards', JSON.stringify(leaderBoards));
+
+    $('#finishModal').modal({
+      show: false,
+    });
+    this.router.navigate(['/main']);
   }
 }
