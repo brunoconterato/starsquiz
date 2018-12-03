@@ -58,21 +58,17 @@ export class FinishModalComponent implements OnInit {
   }
 
   cancel() {
-    $('#finishModal').modal({
-      show: false,
-    });
-    this.router.navigate(['/main']);
-
-    this.resetData();
+    this.finishAll();
   }
 
   savePoints() {
-    // stop here if form is invalid
     this.form.get('name').markAsTouched();
     this.form.get('email').markAsTouched();
+    this.form.markAsTouched();
     if (this.form.invalid) {
       return;
     }
+    console.log('chegou aqui');
 
     let leaderBoards = JSON.parse(localStorage.getItem('leaderBoards'));
     if (!leaderBoards) {
@@ -83,15 +79,16 @@ export class FinishModalComponent implements OnInit {
 
     localStorage.setItem('leaderBoards', JSON.stringify(leaderBoards));
 
+    this.finishAll();
+  }
+
+  finishAll() {
+    this.router.navigate(['/main']);
+
     $('#finishModal').modal({
       show: false,
     });
-    this.router.navigate(['/main']);
 
-    this.resetData();
-  }
-
-  resetData() {
     this.form.reset();
 
     this.callback.emit({
