@@ -11,7 +11,8 @@
   <div class="cards-content">
     <!-- items being paged -->
     <div *ngFor="let item of pagedItems">
-      <app-card [person]="item" (callback)="eventReceiver($event)"></app-card>
+      <app-card [person]="item" [points]="boardPoints[item.name]"
+        (callback)="eventReceiver($event)"></app-card>
     </div>
   </div>
 
@@ -33,15 +34,6 @@
           <a (click)="fetchData(pager.totalPages)">Last &gt;&gt;</a>
       </li>
   </ul>
-
-
-
-
-
-
-  <!-- <div class="cards-content">
-    <app-card (callback)="eventReceiver($event)" *ngFor="let card of cards"></app-card>
-  </div> -->
 </div>
 
 <app-details-modal [data]="initialGameData"></app-details-modal>

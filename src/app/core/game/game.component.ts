@@ -3,8 +3,9 @@ import { FinishModalComponent } from './finish-modal/finish-modal.component';
 import { DetailsModalComponent } from './details-modal/details-modal.component';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { SwapiService } from './swapi.service';
+import * as _ from 'lodash';
 
-import { Person, Vehicle, Film, Specie, Planet } from './game.interface';
+import { Person, Vehicle, Film, Specie, Planet, Points } from './game.interface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -37,6 +38,9 @@ export class GameComponent implements OnInit {
 
   pager: any = {}; // pager object
   pagedItems: any[]; // paged items
+
+  // boardPoints = new Array<Points>();
+  boardPoints: any = {};
 
   initialGameData: any;
 
@@ -85,5 +89,23 @@ export class GameComponent implements OnInit {
 
     // get current page of items
     this.pagedItems = this.people;
+  }
+
+  updatePoints(payload: any) {
+    const personName = payload.personName;
+    const enteredValue = payload.enteredValue;
+    const correct = enteredValue.toLowerCase() === personName.toLowerCase();
+
+    this.boardPoints = this.addOrReplacePoints(this.boardPoints, {
+      personName,
+      gotInfo: this.boardPoints[personName] ? this.boardPoints[personName].gotInfo : false,
+      correct,
+      enteredValue,
+    });
+  }
+
+  addOrReplacePoints(obj: any, pts: Points) {
+    obj[pts.personName] = pts;
+    return obj;
   }
 }

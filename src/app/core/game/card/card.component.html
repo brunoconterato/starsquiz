@@ -4,6 +4,7 @@
   </ng-container>
   <div class="options-row">
     <button class="options-button" (click)="showDetails()"><i class="fa fa-question"></i></button>
-    <input type="text" placeholder="Nome">
+    <input type="text" placeholder="Nome" [value]="_points?.enteredValue"
+      (blur)="onNameChange($event.target.value)">
   </div>
 </div>

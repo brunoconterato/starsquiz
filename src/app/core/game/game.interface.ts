@@ -24,3 +24,10 @@ export interface Planet {
 export interface Specie {
   name: String;
 }
+
+export interface Points {
+  personName: string;
+  gotInfo: boolean;
+  correct: boolean;
+  enteredValue: string;
+}
