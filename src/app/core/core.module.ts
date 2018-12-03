@@ -1,6 +1,7 @@
 import { CoreRoutingModule } from './core-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CoreComponent } from './core.component';
 import { MainComponent } from './main/main.component';
@@ -24,7 +25,8 @@ import { PaginationComponent } from './game/pagination/pagination.component';
   ],
   imports: [
     BrowserModule,
-    CoreRoutingModule
+    CoreRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [CoreComponent]

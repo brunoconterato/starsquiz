@@ -13,6 +13,10 @@ div + div {
   margin-top: 20px;
 }
 
+div > div {
+  margin-bottom: 20px;
+}
+
 #points-row {
   font-size: 30px;
 }

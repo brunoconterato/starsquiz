@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as _ from 'lodash';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 declare var $: any;
 
@@ -15,9 +16,16 @@ export class FinishModalComponent implements OnInit {
   _boardPoints: any;
   totalPoints: number = 0;
 
-  constructor() { }
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      points: [0, Validators.required]
+    });
   }
 
   open() {
@@ -42,5 +50,17 @@ export class FinishModalComponent implements OnInit {
       }
     }
 
+    this.form.get('points').setValue(this.totalPoints);
+  }
+
+  savePoints() {
+    let leaderBoards = JSON.parse(localStorage.getItem('leaderBoards'));
+    if (!leaderBoards) {
+      leaderBoards = new Array<any>();
+    }
+
+    leaderBoards.push(this.form.value);
+
+    localStorage.setItem('leaderBoards', JSON.stringify(leaderBoards));
   }
 }
