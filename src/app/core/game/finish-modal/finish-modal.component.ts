@@ -68,7 +68,6 @@ export class FinishModalComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    console.log('chegou aqui');
 
     let leaderBoards = JSON.parse(localStorage.getItem('leaderBoards'));
     if (!leaderBoards) {
@@ -83,16 +82,14 @@ export class FinishModalComponent implements OnInit {
   }
 
   finishAll() {
-    $('#finishModal').modal({
-      show: false,
-    });
-
-    this.router.navigate(['/main']);
+    $('#finishModal').modal('hide');
 
     this.form.reset();
 
     this.callback.emit({
       fn: 'resetData',
     });
+
+    this.router.navigate(['/main']);
   }
 }

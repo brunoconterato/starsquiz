@@ -122,7 +122,6 @@ export class GameComponent implements OnInit {
   }
 
   resetData() {
-    console.log('recebeu reset data');
     this.boardPoints = {};
   }
 }
