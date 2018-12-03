@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as _ from 'lodash';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,6 +14,9 @@ export class FinishModalComponent implements OnInit {
   @Input() set boardPoints(pts) {
     this._boardPoints = pts;
   }
+
+  @Output() callback = new EventEmitter();
+
   _boardPoints: any;
   totalPoints: number = 0;
 
@@ -54,6 +57,15 @@ export class FinishModalComponent implements OnInit {
     this.form.get('points').setValue(this.totalPoints);
   }
 
+  cancel() {
+    $('#finishModal').modal({
+      show: false,
+    });
+    this.router.navigate(['/main']);
+
+    this.resetData();
+  }
+
   savePoints() {
     // stop here if form is invalid
     this.form.get('name').markAsTouched();
@@ -75,5 +87,15 @@ export class FinishModalComponent implements OnInit {
       show: false,
     });
     this.router.navigate(['/main']);
+
+    this.resetData();
+  }
+
+  resetData() {
+    this.form.reset();
+
+    this.callback.emit({
+      fn: 'resetData',
+    });
   }
 }

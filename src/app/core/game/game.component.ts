@@ -39,7 +39,6 @@ export class GameComponent implements OnInit {
   pager: any = {}; // pager object
   pagedItems: any[]; // paged items
 
-  // boardPoints = new Array<Points>();
   boardPoints: any = {};
 
   initialGameData: any;
@@ -120,5 +119,10 @@ export class GameComponent implements OnInit {
 
   finishGame() {
     this.finishModal.open();
+  }
+
+  resetData() {
+    console.log('recebeu reset data');
+    this.boardPoints = {};
   }
 }

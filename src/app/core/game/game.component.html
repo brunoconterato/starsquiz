@@ -37,4 +37,4 @@
 </div>
 
 <app-details-modal [data]="initialGameData"></app-details-modal>
-<app-finish-modal [boardPoints]="boardPoints"></app-finish-modal>
+<app-finish-modal (callback)="eventReceiver($event)" [boardPoints]="boardPoints"></app-finish-modal>
