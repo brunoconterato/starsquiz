@@ -83,11 +83,11 @@ export class FinishModalComponent implements OnInit {
   }
 
   finishAll() {
-    this.router.navigate(['/main']);
-
     $('#finishModal').modal({
       show: false,
     });
+
+    this.router.navigate(['/main']);
 
     this.form.reset();
 
