@@ -15,6 +15,10 @@ export class FinishModalComponent implements OnInit {
   }
 
   open() {
-    $('#finishModal').modal('show');
+    $('#finishModal').modal({
+      show: true,
+      backdrop: 'static',
+      keyboard: false
+  })
   }
 }
