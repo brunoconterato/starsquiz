@@ -77,6 +77,12 @@ export class GameComponent implements OnInit {
 
   openDetails(payload) {
     this.detailsModal.open(payload);
+
+    this.updatePoints({
+      personName: payload.name,
+      enteredValue: null,
+      gotInfo: true
+    });
   }
 
   showFinish(payload) {
@@ -93,14 +99,17 @@ export class GameComponent implements OnInit {
 
   updatePoints(payload: any) {
     const personName = payload.personName;
-    const enteredValue = payload.enteredValue;
-    const correct = enteredValue.toLowerCase() === personName.toLowerCase();
+    const enteredValue = payload.enteredValue ? payload.enteredValue :
+      this.boardPoints[personName] ? this.boardPoints[personName]['enteredValue'] : '';
+
+    const gotInfo = payload.gotInfo ? payload.gotInfo :
+      this.boardPoints[personName] ? this.boardPoints[personName]['gotInfo'] : false;
+
+    const correct = enteredValue ?
+      enteredValue.toLowerCase() === personName.toLowerCase() : false;
 
     this.boardPoints = this.addOrReplacePoints(this.boardPoints, {
-      personName,
-      gotInfo: this.boardPoints[personName] ? this.boardPoints[personName].gotInfo : false,
-      correct,
-      enteredValue,
+      personName, gotInfo, correct, enteredValue,
     });
   }
 

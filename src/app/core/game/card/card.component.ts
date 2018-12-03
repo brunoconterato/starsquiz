@@ -47,7 +47,8 @@ export class CardComponent implements OnInit {
       fn: 'updatePoints',
       payload: {
         personName: this._person.name,
-        enteredValue: value
+        enteredValue: value,
+        gotInfo: this.points ? this.points.gotInfo || false : false,
       }
     });
   }
